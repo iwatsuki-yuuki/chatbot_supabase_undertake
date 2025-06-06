@@ -1,51 +1,47 @@
-chatbot_supabase_undertake
+📚 Q&A AIチャットボット（Supabase + OpenAI）
 
-📌 プロジェクト概要
+専門的な情報やFAQに迅速かつ正確に回答できるAIチャットボットです。
+CSV形式のデータをもとに、類似質問を検出し、自動的に回答を生成します。
 
-CSVデータをもとに、Supabase（pgvector）とOpenAI（GPT・Embeddings API）を利用した、Q&A形式のAIチャットボットです。ユーザーが入力した質問をベクトル化し、Supabaseデータベースに登録した類似質問を検索・検索結果をもとにOpenAI GPTを利用し、自然で正確な日本語回答を生成します。フロントエンドはStreamlitを使用し、シンプルで直感的なWeb UIを提供します。
+⸻
 
-🛠 使用技術・データベース
-	•	データベース: Supabase (pgvector)
-	•	埋め込み生成: OpenAI Embeddings API (text-embedding-3-large)
-	•	自然言語処理: OpenAI GPTモデル (gpt-4o)
-	•	フロントエンド: Streamlit
-	•	開発言語: Python 3.x
+🧠 機能概要
+	1.	質問ベクトル化（OpenAI Embeddings API）
+入力された質問をOpenAI Embeddings API（text-embedding-3-large）でベクトル化します。
+	2.	ベクトル類似度検索（Supabase・pgvector）
+質問ベクトルをSupabaseのpgvectorを用いて類似質問を検出します。
+	3.	自然言語による回答生成（GPT-4o）
+検出された類似質問・回答をもとにGPT-4oが自然な日本語回答を生成します。
+	4.	シンプルなUI（Streamlit）
+ユーザーが直感的に操作できるWebインターフェースを提供します。
 
-🌱 環境構築手順
+⸻
 
-① リポジトリをクローン
+🎯 想定利用シーン
+	•	企業内でのFAQ対応やナレッジベースの構築
+	•	カスタマーサポート業務の効率化
+	•	初めて業務にあたる担当者や研修生のサポート
 
-git clone <あなたのGitHubリポジトリURL>
-cd qanda_undertake
+⸻
 
-② Python仮想環境を作成（推奨）
+🛠 使用技術
 
-python3 -m venv venv
-source venv/bin/activate
+技術・サービス	用途
+OpenAI Embeddings API	質問テキストのベクトル化
+Supabase（pgvector）	ベクトル類似度検索
+GPT-4o（OpenAI）	自然言語による回答生成
+Streamlit	シンプルなWeb UI
 
-③ 必要なパッケージをインストール
 
-pip install -r requirements.txt
+⸻
 
-④ 環境変数の設定 (.envファイル)
+📌 特記事項
+	•	日本語での利用に最適化されています。
+	•	今後、専門用語のカスタマイズ機能を追加予定です。
 
-プロジェクトのルートに.envファイルを作成し、以下を記入します。
+⸻
 
-OPENAI_API_KEY=<あなたのOpenAI APIキー>
-SUPABASE_URL=<あなたのSupabaseプロジェクトURL>
-SUPABASE_KEY=<あなたのSupabaseプロジェクトAPIキー>
-
-⚡️ アプリケーションの実行方法
-
-streamlit run app/app.py
-
-ブラウザで http://localhost:8501 にアクセスするとアプリケーションが表示されます。
-
-🌐 デプロイについて（Render利用の場合）
-	•	.envファイルをGitHubにプッシュしないように注意し、.gitignoreで明示的に除外してください。
-	•	Renderで環境変数を設定し、必要な環境を整えます。
-	•	GitHubリポジトリと連携後、デプロイを実施すると、公開URLが提供されます。
-
-💡 注意事項
-	•	データベースの埋め込みベクトルの次元（dimension）がモデルと一致することを確認してください（text-embedding-3-largeは3072次元）。
-	•	APIキーの管理は厳重に行い、絶対に公開しないでください。
+📬 今後の展望
+	•	業界別テンプレートの追加（製造業・サービス業・医療など）
+	•	質問の自動補完・推測機能の導入
+	•	LINEやSlackなど外部ツールとの連携強化
